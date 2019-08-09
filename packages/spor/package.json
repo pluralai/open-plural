@@ -1,39 +1,40 @@
 {
-  "name": "@pluralai/spor",
-  "version": "1.0.0",
-  "description": "A small library for tracking user interactions on the web",
-  "keywords": [
-    "typescript"
-  ],
-  "author": "Michael Nissen <michael@plural.ai>",
-  "homepage": "https://www.plural.ai",
-  "license": "ISC",
-  "main": "src/spor.js",
-  "types": "spor.d.ts",
-  "scripts": {
-    "test": "jest --config jestconfig.json"
-  },
-  "directories": {
-    "src": "src",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib/**/*"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pluralai/open-plural.git"
-  },
-  "bugs": {
-    "url": "https://github.com/pluralai/open-plural/issues"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.17",
-    "jest": "^24.8.0",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.5.3"
-  }
+	"name": "@pluralai/spor",
+	"version": "1.0.0",
+	"description": "A small library for tracking user interactions on the web",
+	"keywords": [
+		"typescript"
+	],
+	"author": "Michael Nissen <michael@plural.ai>",
+	"homepage": "https://www.plural.ai",
+	"license": "ISC",
+	"main": "src/spor.js",
+	"types": "spor.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"test": "jest --config jestconfig.json"
+	},
+	"directories": {
+		"src": "src",
+		"test": "__tests__"
+	},
+	"files": [
+		"lib/**/*"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pluralai/open-plural.git"
+	},
+	"bugs": {
+		"url": "https://github.com/pluralai/open-plural/issues"
+	},
+	"devDependencies": {
+		"@types/jest": "^24.0.17",
+		"jest": "^24.8.0",
+		"ts-jest": "^24.0.2",
+		"typescript": "^3.5.3"
+	}
 }
