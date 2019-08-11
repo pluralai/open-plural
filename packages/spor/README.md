@@ -1,5 +1,9 @@
 # spor
 
+[![](https://flat.badgen.net/npm/v/@pluralai/spor?icon=npm)](https://www.npmjs.com/package/@pluralai/spor)
+[![](https://flat.badgen.net/bundlephobia/min/@pluralai/spor?color=cyan)](https://www.npmjs.com/package/@pluralai/spor)
+[![](https://flat.badgen.net/npm/license/@pluralai/spor)](https://www.npmjs.com/package/@pluralai/spor)
+
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Documentation](#documentation)
