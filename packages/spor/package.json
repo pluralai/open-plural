@@ -8,7 +8,7 @@
 	"author": "Michael Nissen <michael@plural.ai>",
 	"homepage": "https://www.plural.ai",
 	"license": "ISC",
-	"main": "src/spor.js",
+	"main": "./lib/spor.js",
 	"types": "spor.d.ts",
 	"scripts": {
 		"build": "tsc",
