@@ -13,7 +13,7 @@ export interface InitializeOptions {
 export interface TrackingHistory {
 	user?: string;
 	environment?: string;
-	data: TrackingEvent[] | [];
+	events: TrackingEvent[] | [];
 }
 
 export interface TrackingEvent {
@@ -52,7 +52,7 @@ class Spor implements SporInterface {
 	public initialize(options?: InitializeOptions) {
 		this.history = {
 			...options,
-			data: [],
+			events: [],
 		};
 	}
 
@@ -100,7 +100,7 @@ class Spor implements SporInterface {
 			throw error;
 		}
 
-		this.history.data = [...this.history.data, event];
+		this.history.events = [...this.history.events, event];
 		return event;
 	}
 
