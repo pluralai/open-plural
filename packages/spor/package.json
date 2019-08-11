@@ -9,7 +9,7 @@
 	"homepage": "https://www.plural.ai",
 	"license": "ISC",
 	"main": "./lib/spor.js",
-	"types": "spor.d.ts",
+	"types": "./lib/spor.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"test": "jest --config jestconfig.json"
