@@ -15,7 +15,7 @@
 		"hooks": {
 			"pre-commit": "lint-staged",
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-			"pre-push": "lerna clean && lerna run test"
+			"pre-push": "lerna run test"
 		}
 	},
 	"lint-staged": {
