@@ -6,7 +6,6 @@
   - [`initialize`](#initialize)
   - [`track`](#track)
   - [`getHistory`](#gethistory)
-  - [`terminate`](#terminate)
 - [Issues](#issues)
 
 ## Getting Started
@@ -94,26 +93,28 @@ const history = Spor.getHistory();
 
 When a user is done with their interaction and ends their session, the tracking history can be retrieved and stored in using whatever medium you are working with.
 
-To ensure that no tracking information is lost, this could be done by adding a listener on the browsers `unload` event and then triggering the `terminate()` function:
+To ensure that no tracking information is lost, this could be done by adding a listener on the browsers `unload` event and then getting the history.
 
 ```ts
 import Spor from 'spor';
 
-window.addEventListener('unload', () => Spor.terminate());
-```
+window.addEventListener('unload', () => {
+	const history = Spor.getHistory();
 
-The function then purges the initializeialization options and tracking history, allowing it to be re-initialized the next time the user starts a session.
+	// Save to a database of your choice
+	saveHistory(history);
+});
+```
 
 ## Documentation
 
 The `Spor` class implements the `SporInterface` and exposes a set of functions to initialize, track and store tracking data:
 
 ```ts
-SporInterface {
-	initialize: (options: SporOptions) => Promise<boolean>;
-	track: (data: TrackingOptions) => void;
-	getHistory: () => TrackingInterface | null;
-	dispatchAndClose: () => Promise<TrackingResponse>;
+interface SporInterface {
+	track: (event: TrackingEvent) => TrackingEvent;
+	initialize: (options?: InitializeOptions) => void;
+	getHistory: () => TrackingHistory | null;
 }
 ```
 
@@ -161,7 +162,7 @@ TrackingOptions {
 }
 ```
 
-Apart from requiring an event `type`, the `data` object take an optional `timestamp` and nested `data` object. The nested `data` object is of type `TrackingData` which is structured as a index signature with an `unknown` value, meaning you can store any key-value pair.
+Apart from requiring an event `type`, the `data` object take an optional `timestamp` and nested `data` object. The nested `data` object is of type `TrackingEvent` which is structured as a index signature with an `unknown` value, meaning you can store any key-value pair.
 
 The simplest way to track an event is with no associated data, only setting the `type`:
 
@@ -195,7 +196,7 @@ The schema for the history is JSON compliant, making it easy to store and render
 
 ```ts
 {
-	userID: 320340,
+	user: '320340',
 	environment: 'production',
 	data: [
 		{
@@ -237,20 +238,8 @@ The schema for the history is JSON compliant, making it easy to store and render
 }
 ```
 
-### `dispatchAndClose`
-
-When the user session ends, the tracking history should be cleared and all connections purged to ensure that one session is isolated from another. This also means that you want to store the result in the database before clearing it. The `dispatchAndClose` function does exactly this.
-
-```ts
-Spor.dispatchAndClose();
-```
-
-Calling the above snippet at the end of a user session will dispatch the tracking history to the mongo database determined by the `connection` string from the [`initialize`](#initialize) function.
-
 ## Issues
 
-If any issues occur using this library, please fill out a detailed bug report on [Clubhouse](https://app.clubhouse.io/pluralai/stories) by arrow next to the "Create Story" button and selecting the "new bug" template under the "Web app".
+If any issues occur using this library, please fill out a detailed bug report on [GitHub](https://github.com/pluralai/open-plural/issues).
 
-If you can solve the issue yourself, check out the [Contributing](https://github.com/pluralai/plural-app/blob/develop/CONTRIBUTING.md) document on how to get started developing on platform and how to submit your proposed updates.
-
-You can always contact [michael@plural.ai](mailto:michael@plural.ai) in case you have any questions.
+If you want to take a stab at solving the issue yourself, check out the [Contributing](https://github.com/pluralai/open-plural/blob/master/CONTRIBUTING.md) document on how to get started.
