@@ -1,4 +1,5 @@
 {
-  "version": "independent",
-  "packages": ["packages/*"]
+	"version": "independent",
+	"packages": ["packages/*"],
+	"conventionalCommits": true
 }
