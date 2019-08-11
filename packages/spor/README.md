@@ -120,49 +120,50 @@ interface SporInterface {
 
 ### `initialize`
 
-The `initialize` function is used to initialize the SDK and set up the internal history and mongo connector. As seen by the function alias, it takes an `options` object of type `SporOptions`.
+The `initialize` function is used to initialize the module and set up the internal history. As seen by the function alias, it takes an optional `options` object of type `InitializeOptions`.
 
 ```ts
-SporOptions {
-  userID?: number;
-  environment?: 'staging' | 'production';
-  connection: string;
+interface InitializeOptions {
+	[key: string]: unknown;
 }
 ```
 
-`SporOptions` requires at the minimum a `connection` string which is used to initialize the mongo connector. It optionally contains a `environment` used to denote which in which cluster the data was tracked, and a `userID` which is a unique identifier used to tie different tracked sessions together around the same user.
+The options is typed with with an index signature allowing you to add whatever information you want to the root of the tracked history. Cannot be changed after the initialization.
 
-The function returns a `Promise` which resolves to `true` if the initializeialization succeeds, or gets rejected with the error if one occurs. This means that you can `await` the function if you need access to it immediately after calling it.
-
-The simplest way to initialize the SDK is to just provide the `connection` string:
+The simplest way to initialize the module is to call it without any options:
 
 ```ts
-Spor.initialize({ connection: 'mongodb://127.0.0.1:27017' });
+Spor.initialize();
 ```
 
-To attach the information about the which user performed the search, simply attach it to the `initialize`:
+To attach additional information to the root of the tracking history, for example about the which user performed the action and what environment the event was tracked within, simply pass it to the `initialize`:
 
 ```ts
 Spor.initialize({
-	connection: 'mongodb://127.0.0.1:27017',
-	userID: 5201830,
+	user: '5201830',
 	environment: 'production',
 });
+
+// {
+// 	 user: '5201830',
+// 	 environment: 'production',
+// 	 data: [],
+// }
 ```
 
 ### `track`
 
-The `track` function is used to track an event and add it to the tracking history. The functions accepts an object, which describes the event, as an argument. The `data` objects type is `TrackingOptions` which requires a `type` of event to be set. The `type` should be a reusable string used to group type of events together. If you need to distinguish between different tracked events, you should add the nested `data` object with that information.
+The `track` function is used to track an event and add it to the tracking history. The functions accepts an object, which describes the event, as an argument. The `event` objects type is `TrackingEvent` which requires a `type` of event to be set. The `type` should be a reusable string used to group type of events together. If you need to distinguish between different tracked events, you should add the nested `data` object with that information.
 
 ```ts
-TrackingOptions {
+interface TrackingEvent {
 	type: string;
-	data?: TrackingData;
-	timestamp?: Date;
+	data?: TrackingEventData;
+	timestamp?: string;
 }
 ```
 
-Apart from requiring an event `type`, the `data` object take an optional `timestamp` and nested `data` object. The nested `data` object is of type `TrackingEvent` which is structured as a index signature with an `unknown` value, meaning you can store any key-value pair.
+Apart from requiring an event `type`, the `event` object take an optional `timestamp` and nested `data` object. The nested `data` object is of type `TrackingEventData` which is structured as a index signature with an `unknown` value, meaning you can store any key-value pair.
 
 The simplest way to track an event is with no associated data, only setting the `type`:
 

@@ -5,8 +5,6 @@ export interface SporInterface {
 }
 
 export interface InitializeOptions {
-	user?: string;
-	environment?: string;
 	[key: string]: unknown;
 }
 
