@@ -1,6 +1,6 @@
 {
 	"name": "@pluralai/spor",
-	"version": "0.0.q",
+	"version": "0.0.1",
 	"description": "A small library for tracking user interactions on the web",
 	"keywords": [
 		"typescript"
