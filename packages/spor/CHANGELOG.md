@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0-alpha.0](https://github.com/pluralai/open-plural/compare/@pluralai/spor@0.3.0-alpha.0...@pluralai/spor@0.4.0-alpha.0) (2019-08-11)
+
+### Bug Fixes
+
+- **spor:** add npm and readme ([d7979f8](https://github.com/pluralai/open-plural/commit/d7979f8))
+
 # [0.3.0-alpha.0](https://github.com/pluralai/open-plural/compare/@pluralai/spor@0.2.0-alpha.0...@pluralai/spor@0.3.0-alpha.0) (2019-08-11)
 
 ### Bug Fixes
