@@ -50,7 +50,7 @@ describe('track', () => {
 			user: '3108-18mda8rfj',
 		});
 
-		const data: TrackingEvent = {
+		const event: TrackingEvent = {
 			type: 'TOKEN_SELECTED',
 			data: {
 				token: 'Aviation Engineering',
@@ -63,10 +63,10 @@ describe('track', () => {
 		const expectedHistory: TrackingHistory = {
 			user: '3108-18mda8rfj',
 			environment: 'staging',
-			data: [data],
+			events: [event],
 		};
 
-		Spor.track(data);
+		Spor.track(event);
 
 		expect(Spor.getHistory()).toStrictEqual(expectedHistory);
 	});
