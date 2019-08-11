@@ -19,7 +19,9 @@
 		"test": "__tests__"
 	},
 	"files": [
-		"lib/**/*"
+		"lib/**/*",
+		"README.md",
+		"package.json"
 	],
 	"publishConfig": {
 		"access": "public"
