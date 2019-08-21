@@ -44,10 +44,14 @@ describe('track', () => {
 		expect(() => Spor.track(data)).toThrowError();
 	});
 
-	it('correctly initializes, tracks, and get history', () => {
+	it('correctly initializes, identifies, tracks, and get history', () => {
 		Spor.initialize({
 			environment: 'staging',
-			user: '3108-18mda8rfj',
+		});
+
+		Spor.identify({
+			name: 'Elon Musk',
+			email: 'elon@spacex.com',
 		});
 
 		const event: TrackingEvent = {
@@ -61,7 +65,7 @@ describe('track', () => {
 		};
 
 		const expectedHistory: TrackingHistory = {
-			user: '3108-18mda8rfj',
+			user: 'elon@spacex.com',
 			environment: 'staging',
 			events: [event],
 		};
