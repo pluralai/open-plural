@@ -12,7 +12,8 @@
 	"types": "./lib/spor.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"test": "jest --config jestconfig.json"
+		"test": "jest --config jestconfig.json",
+		"prepublish": "yarn build"
 	},
 	"directories": {
 		"src": "src",
