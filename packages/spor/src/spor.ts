@@ -15,6 +15,7 @@ export interface SporInterface {
 export interface IdentifyOptions {
 	name?: string;
 	email: string;
+	id?: string;
 }
 
 export interface InitializeOptions {
@@ -109,7 +110,10 @@ class Spor implements SporInterface {
 		}
 
 		if (this.segment) {
-			this.segment.identify(user);
+			this.segment.identify({
+				...user,
+				id: user.id ? user.id : user.email,
+			});
 		}
 
 		this.history['user'] = user.email;
