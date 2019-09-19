@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0-alpha.0](https://github.com/pluralai/open-plural/compare/@pluralai/spor@0.5.0-alpha.0...@pluralai/spor@0.6.0-alpha.0) (2019-09-19)
+
+### Features
+
+- **spor:** allow identify with user id ([fc2fe3a](https://github.com/pluralai/open-plural/commit/fc2fe3a))
+
 # [0.5.0-alpha.0](https://github.com/pluralai/open-plural/compare/@pluralai/spor@0.4.0-alpha.0...@pluralai/spor@0.5.0-alpha.0) (2019-08-21)
 
 ### Features
